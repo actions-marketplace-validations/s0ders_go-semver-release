@@ -107,7 +107,6 @@ rules:
 	alphaCommits := []string{
 		"fix",
 		"feat",
-		// TODO: process and tag each branch individually before processing the next one, this way, prerelease branch see "main" tags, the correct version below should be 2.0.0-alpha not 1.0.0-alpha because alpha should have seen the 1.0.0 tag
 		"feat!", // 1.0.0-alpha
 		"fix",
 	}

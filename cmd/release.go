@@ -139,6 +139,11 @@ func NewReleaseCmd(ctx *appcontext.AppContext) *cobra.Command {
 
 					err = tagger.TagRepository(repository, semver, commitHash)
 					if err != nil {
+						// No-op if the tag was somehow already there
+						if errors.Is(err, tag.ErrTagAlreadyExists) {
+							continue
+						}
+
 						return fmt.Errorf("tagging repository: %w", err)
 					}
 
